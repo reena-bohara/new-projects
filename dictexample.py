@@ -1,0 +1,21 @@
+Cotton_products ={"checks" : 64,"strips" : 58, "plain" : [40,50,60]}
+print (Cotton_products["checks"])
+print (Cotton_products["plain"])
+Cotton_products["dobby"]=90
+print(Cotton_products)
+Cotton_products["strips"]=87
+print(Cotton_products)
+#del(Cotton_products["dobby"])
+print(Cotton_products)
+c_p2=Cotton_products.copy()
+print("The dict c_p2 is",c_p2)
+print(Cotton_products.get("dobby"))
+print(c_p2.pop("dobby"))
+print(c_p2)
+c_p2.popitem()
+c_p2.popitem()
+print (c_p2)
+c_p2.setdefault("dobby")
+print(c_p2)
+Cotton_products.update(c_p2)
+print("cotton products after using update is",Cotton_products)
