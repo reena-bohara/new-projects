@@ -2,10 +2,10 @@ from abc import ABC, abstractmethod
 
 class SmartDevices(ABC):
     @abstractmethod
-    def Devices(self):
+    def activate(self):
         pass
 
-class Items(SmartDevices):
+class Items:
     def __init__(self, brand, model_number, price, colour, regulator):
         self.brand = brand
         self.model_number = model_number
@@ -13,23 +13,31 @@ class Items(SmartDevices):
         self.colour = colour
         self.regulator = regulator 
 
-class SmartLight(SmartDevices, Items):
+class SmartLight(SmartDevices,Items):
     def __init__(self,brand, model_number, price, colour, regulator):
-        pass
+        super().__init__(brand, model_number, price, colour, regulator)
+    def activate (self):
+        print("Turn on the Lights")
 
-class SmartThermoster(SmartDevices, Items):
-    def __init__(self, brand, model_number, price, colour, regulator, temperature):
-        super().__init__(temperature)
+
+class SmartThermostat(SmartDevices, Items):
+    def __init__(self, brand, model_number, price, colour, regulator):
+        super().__init__(brand, model_number, price, colour, regulator)
         self.__temperature = 24 
+    def activate (self):
+        print("Turn on the Thermostat")
 
 class SmartFan(SmartDevices, Items):
     def __init__(self, brand, model_number, price, colour, regulator):
-        pass
+        super().__init__(brand, model_number, price, colour, regulator)
+    def activate (self):
+        print("Turn on the Fan")
 
-    def Devices(SmartDevices):
-        for Devices in SmartDevices:
-            Devices()
 
-    Devices = ['SmartLight'(), 'SmartThermoster'(), 'SmartFan'()]
-    SmartDevices(Devices)
+def activate_devices(Electronics):
+        for Devices in Electronics:
+            Devices.activate()
+
+Devices = [SmartLight('Bajaj','a1',4500,'white',3), SmartThermostat('Seimens', '301',2500,'cream',5), SmartFan('Cromtan','2B',1500,'Black',2)]
+activate_devices(Devices)
             
