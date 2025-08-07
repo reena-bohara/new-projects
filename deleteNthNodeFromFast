@@ -1,0 +1,35 @@
+from LinkedList_Node import Node
+
+def deleteNthNodeFromEnd(head, n):
+    fast = head
+    slow = head
+
+    for _ in range(n):
+        fast = fast.next
+
+    if not fast:
+        return head.next
+    
+
+    while fast.next :
+        fast = fast.next
+        slow = slow.next
+
+    slow.next = slow.next.next
+    return head
+
+if    __name__ ==  "__main__":
+    head = Node(4)
+    head.next = Node(8)
+    head.next.next = Node(12)
+    head.next.next.next = Node(16)
+    head.next.next.next.next = Node(20)
+    head.next.next.next.next.next = Node(24)
+    head.next.next.next.next.next.next = Node(28)
+
+    head = deleteNthNodeFromEnd(head,6)
+
+    curr = head
+    while curr:
+        print(curr.data,end="->")
+        curr = curr.next
